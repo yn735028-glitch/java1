@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         let nombre = 29;
+    let estPremier = true;
+if (nombre <= 1) {
+    estPremier = false;
+} else {
+    let i = 2; 
+    while (i < nombre) {
+        if (nombre % i === 0) {
+            estPremier = false; 
+            break;
+        }
+        i++; // on passe au diviseur suivant
+    }
+}
+
+// Affichage du résultat
+if (estPremier) {
+    console.log(nombre + " est un nombre premier.");
+} else {
+    console.log(nombre + " n'est pas un nombre premier.");
+}
+    </script>
+</body>
+</html>
