@@ -6,28 +6,50 @@
     <title>Document</title>
 </head>
 <body>
-    <script>
-         let nombre = 29;
-    let estPremier = true;
-if (nombre <= 1) {
-    estPremier = false;
-} else {
-    let i = 2; 
-    while (i < nombre) {
-        if (nombre % i === 0) {
-            estPremier = false; 
-            break;
-        }
-        i++; // on passe au diviseur suivant
-    }
-}
+      <h2>Vérifier si un nombre est premier</h2>
+  
+  <!-- Formulaire -->
+  <form id="formPremier">
+    <label for="nombre">Entrez un nombre :</label>
+    <input type="number" id="nombre" required>
+    <button type="submit">Vérifier</button>
+  </form>
+  
+  <!-- Zone d'affichage du résultat -->
+  <p id="resultat"></p>
+  
+  <script>
+    // Récupération du formulaire
+    const form = document.getElementById("formPremier");
+    const resultat = document.getElementById("resultat");
 
-// Affichage du résultat
-if (estPremier) {
-    console.log(nombre + " est un nombre premier.");
-} else {
-    console.log(nombre + " n'est pas un nombre premier.");
-}
-    </script>
+    form.addEventListener("submit", function(event) {
+      event.preventDefault(); // Empêche le rechargement de la page
+      
+      let nombre = parseInt(document.getElementById("nombre").value);
+      let estPremier = true;
+
+      // Cas particuliers
+      if (nombre <= 1) {
+        estPremier = false;
+      } else {
+        let i = 2;
+        while (i < nombre) {
+          if (nombre % i === 0) {
+            estPremier = false;
+            break; // on arrête dès qu'on trouve un diviseur
+          }
+          i++;
+        }
+      }
+
+      // Affichage du résultat
+      if (estPremier) {
+        resultat.textContent = nombre + " est un nombre premier.";
+      } else {
+        resultat.textContent = nombre + " n'est pas un nombre premier.";
+      }
+    });
+  </script>
 </body>
 </html>
